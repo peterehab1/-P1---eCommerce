@@ -1,0 +1,21 @@
+/*!
+ * Main Style File
+ * Copyright 2017 @github/peterehab1
+ */
+
+/*Products*/
+.products{
+    width: 130px;
+    margin: 10px;
+}
+
+.products-btn{
+    color: white;
+    border: none;
+    width: 75px;
+    background-color: crimson;
+    margin: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+/*Products*/
