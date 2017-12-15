@@ -19,3 +19,28 @@
     cursor: pointer;
 }
 /*Products*/
+
+/*Profile*/
+.profile-panel{
+    padding: 10px;
+    margin: 15px;
+    text-align: center;
+    border: 1px solid #dadada;
+    border-radius: 3px;
+
+}
+.profile-panel img{
+     width: 75px;
+    border-radius: 50px;
+}
+/*Profile*/
+
+/*Search*/
+.search-form-select{
+        background-color: white;
+    border: none;
+    padding: 9px;
+    border-radius: 5px;
+    margin: 5px;
+}
+/*Search*/

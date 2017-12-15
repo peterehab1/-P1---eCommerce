@@ -1,8 +1,47 @@
 <?php
 
 session_start();
-include "init/init.php";
-include "init/includes/header.php";
+if(!isset($_SESSION['userId'])){
+    include "init/init.php";
+    include "init/includes/header.php";
+}else{
+    header("Location: index");
+    exit();
+    
+}
+
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
+    
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $hashpassword = md5($password);
+    
+    $stmt = $conn->prepare("SELECT * FROM users WHERE userEmail = ? AND userPassword = ?");
+    $stmt->execute(array($email, $hashpassword));
+    $count = $stmt->rowCount();
+    if ($count > 0){
+        $row = $stmt->fetch();
+        $_SESSION['userId'] = $row['userId'];
+        $_SESSION['userName'] = $row['userName'];
+        
+        echo '<div class="alert alert-primary alert-dismissible fade show" role="alert">
+  You are Logged In Now ! <a href="index">Home</a>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>';
+        exit();
+        
+    }else{
+    
+    echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Your Email or Password is wrong, Try again :( </strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>';
+        } 
+}
 
 ?>
 
@@ -13,7 +52,7 @@ include "init/includes/header.php";
 
                 <div class="col-lg-4"></div>
                 <div class="col-lg-4">
-                    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                    <form action="login" method="post">
                        
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email address</label>
@@ -31,7 +70,7 @@ include "init/includes/header.php";
                             </label><br>
                             <a href="#"><small>Forgot password ?</small></a>
                         </div>
-                        <button type="submit" class="btn btn-primary">Login</button>
+                        <input value="Login" name="submit" type="submit" class="btn btn-primary">
                     </form>
                 </div>
                 <div class="col-lg-4"></div>
@@ -40,3 +79,8 @@ include "init/includes/header.php";
 
 
     </div>
+    
+   
+  <?php
+include "init/includes/footer.php";
+?>
