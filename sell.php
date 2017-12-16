@@ -19,6 +19,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
     $fileExt = explode('.', $fileName);
     $fileAcualExt = strtolower(end($fileExt));
     $fileUniqueName = uniqid('', true).".".$fileAcualExt;
+    $productCode = uniqid('', true);
     $fileDest = "images/".$fileUniqueName;
     
     $proName = $_POST['name'];
@@ -26,6 +27,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
     $proType = $_POST['type'];
     $proBrand = $_POST['brand'];
     $proPrice = $_POST['price'];
+    
+    
     
 
 
@@ -50,12 +53,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
         
     }else{
         $imageName =$_FILES['file']['name'];
-        $stmt = $conn->prepare("INSERT INTO products (userId, productName, productDesc, productPrice, productType, productBrand, productImage) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $stmt->execute(array($userId, $proName, $proDesc, $proPrice, $proType, $proBrand, $fileUniqueName));
+        $stmt = $conn->prepare("INSERT INTO products (productCode, userId, productName, productDesc, productPrice, productType, productBrand, productImage) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->execute(array($productCode, $userId, $proName, $proDesc, $proPrice, $proType, $proBrand, $fileUniqueName));
         if(move_uploaded_file($_FILES['file']['tmp_name'], $fileDest)){
             
             echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>WOW ! </strong>Your Product is ready for sell !
+  <strong>WOW ! </strong>Your Product is ready for sell, Check is <a href="product?name='.$proName.'&&code='.$productCode.'">Here</a>
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -85,11 +88,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
                          <div class="form-group">
                             <label for="exampleInputEmail1">Product Type</label>
                              <select name="type" class="form-control">
-                         <option value="Mobiles">Mobiles</option>
-                         <option value="Computers">Computers</option>
-                         <option value="Clothes : Men">Clothes : Men</option>
-                         <option value="Clothes : Women">Clothes : Women</option>
-                         </select>
+                                 <option value="Mobiles">Mobiles</option>
+                                 <option value="Computers">Computers</option>
+                                 <option value="Clothes : Men">Clothes : Men</option>
+                                 <option value="Clothes : Women">Clothes : Women</option>
+                             </select>
                         </div>
                         
                         <div class="form-group">
