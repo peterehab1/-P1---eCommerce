@@ -1,6 +1,5 @@
 <?php
 include "init/init.php";
-
 ?>
 
 <!doctype html>
@@ -38,13 +37,13 @@ include "init/init.php";
   <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent1">
     <ul class="navbar-nav mr-auto">
      <li class="nav-item">   
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="product?type=Mobiles">
           Mobiles
         </a>
       </li>
       
       <li class="nav-item">   
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="product?type=Computers">
           Computers
         </a>
       </li>
@@ -54,8 +53,8 @@ include "init/init.php";
           Clothes
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Men</a>
-          <a class="dropdown-item" href="#">Women</a>
+          <a class="dropdown-item" href="product?type=Clothes : Men">Men</a>
+          <a class="dropdown-item" href="product?type=Clothes : Women">Women</a>
           
         </div>
       </li>
@@ -90,6 +89,9 @@ include "init/init.php";
         <a class="nav-link" href="signup">Sign Up</a>
       </li>';
         }else{
+            $stmt = $conn->prepare("SELECT * FROM cart WHERE userId = ?");
+            $stmt->execute(array($_SESSION['userId']));
+            $count = $stmt->rowCount();
             
             echo '<li class="nav-item dropdown">   
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -102,7 +104,7 @@ include "init/init.php";
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="bag"><div style="color: crimson;"><strong>2 </strong><i class="fas fa-shopping-bag"></i></div></a>
+<a class="nav-link" href="cart"><div style="color: crimson;"><strong>'.$count.'</strong> <i class="fas fa-shopping-bag"></i></div></a>
       </li>
       ';
         }
