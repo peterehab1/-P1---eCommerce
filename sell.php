@@ -26,6 +26,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
     $proDesc = $_POST['desc'];
     $proType = $_POST['type'];
     $proBrand = $_POST['brand'];
+    $proColor = $_POST['color'];
     $proPrice = $_POST['price'];
     
     
@@ -53,8 +54,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
         
     }else{
         $imageName =$_FILES['file']['name'];
-        $stmt = $conn->prepare("INSERT INTO products (productCode, userId, productName, productDesc, productPrice, productType, productBrand, productImage) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->execute(array($productCode, $userId, $proName, $proDesc, $proPrice, $proType, $proBrand, $fileUniqueName));
+        $stmt = $conn->prepare("INSERT INTO products (productColor, productCode, userId, productName, productDesc, productPrice, productType, productBrand, productImage) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->execute(array($proColor, $productCode, $userId, $proName, $proDesc, $proPrice, $proType, $proBrand, $fileUniqueName));
         if(move_uploaded_file($_FILES['file']['tmp_name'], $fileDest)){
             
             echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -98,6 +99,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
                         <div class="form-group">
                             <label for="exampleInputEmail1">Product Brand</label>
                             <input type="text" name="brand" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Brand" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Product Color</label>
+                            <input type="text" name="color" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Brand" required>
                         </div>
                          
                        <div class="form-group">

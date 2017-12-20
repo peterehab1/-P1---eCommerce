@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 20, 2017 at 11:47 ص
+-- Generation Time: Dec 20, 2017 at 10:28 م
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.20
 
@@ -49,7 +49,8 @@ CREATE TABLE `products` (
   `productType` varchar(25) NOT NULL,
   `productImage` varchar(50) NOT NULL,
   `productBrand` varchar(15) NOT NULL,
-  `productCode` varchar(50) NOT NULL
+  `productCode` varchar(50) NOT NULL,
+  `productColor` varchar(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -98,12 +99,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cartId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `cartId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `productId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `productId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `users`
 --

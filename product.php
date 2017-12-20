@@ -22,6 +22,9 @@ if(isset($_GET['name']) && isset($_GET['code'])){
         $image = $row['productImage'];
         $brand = $row['productBrand'];
         $id = $row['productId'];
+        $color = $row['productColor'];
+        
+        $fullProName = $brand." ".$color." ".$proName;
         
         
         ?>
@@ -41,7 +44,7 @@ if(isset($_GET['name']) && isset($_GET['code'])){
             </div>
           </div>
           <div class="right-col">
-            <h1 itemprop="name"><?php echo $proName; ?></h1>
+            <h1 itemprop="name"><?php echo $fullProName; ?></h1>
             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
               <meta itemprop="priceCurrency" content="USD">
               <link itemprop="availability" href="https://schema.org/InStock">
@@ -49,7 +52,6 @@ if(isset($_GET['name']) && isset($_GET['code'])){
                 <div class="price" id="price-preview" quickbeam="price" >
                   $<?php echo $price; ?>
                 </div>
-                <a><?php echo $brand; ?></a>
                 <a><?php echo $type; ?></a>
               </div>
               
@@ -141,7 +143,7 @@ if(isset($_GET['name']) && isset($_GET['code'])){
         
         <aside class="related">
       <div class="_cont">
-        <h2>You might also like</h2>
+        
         <div class="collection-list cols-4" id="collection-list" data-products-per-page="4">
          
          <?php
@@ -152,6 +154,9 @@ if(isset($_GET['name']) && isset($_GET['code'])){
         $price = $item['productPrice'];
         $code = $item['productCode'];
         $image = $item['productImage'];
+        $color = $item['productColor'];
+        $brand = $item['productBrand'];
+        $fullProName = $brand." ".$color." ".$name;
         
            
             ?>
@@ -161,7 +166,7 @@ if(isset($_GET['name']) && isset($_GET['code'])){
               <span class="i second" style="background-image: url('images/<?php echo $image; ?>')"></span>
             </span>
             <span class="text">
-              <strong><?php echo $name; ?></strong>
+              <strong><?php echo $fullProName; ?></strong>
               <span>
                 $<?php echo $price; ?>
               </span>

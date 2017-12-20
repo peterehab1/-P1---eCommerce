@@ -31,14 +31,17 @@ if(!isset($_SESSION['userId'])){
     foreach($row as $item){
         $id = $item['productId'];
         $name = $item['productName'];
+        $brand = $item['productBrand'];
+        $color = $item['productColor'];
         $q = $item['Q'];
         $total = $item['Q'] * $item['productPrice'];
+        $fullProName = $brand." ".$color." ".$name;
         ?>
        
   <tbody>
     <tr>
       <th scope="row"><?php echo $id; ?></th>
-      <td><?php echo $name; ?></td>
+      <td><?php echo $fullProName; ?></td>
       <td><?php echo $q; ?></td>
       <td><?php echo "$" . $total; ?></td>
       <td><form method="post" action="delete"><input hidden value="<?php echo $id; ?>" name="id" /><input value="Delete" name="submit" type="submit"></form></td>
