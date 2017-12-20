@@ -63,13 +63,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
                             <label for="exampleInputPassword1">Password</label>
                             <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
                         </div>
-                        <div class="form-check">
-                            <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input">
-                                     Remember Me 
-                            </label><br>
-                            <a href="#"><small>Forgot password ?</small></a>
-                        </div>
+                        
                         <input value="Login" name="submit" type="submit" class="btn btn-primary">
                     </form>
                 </div>

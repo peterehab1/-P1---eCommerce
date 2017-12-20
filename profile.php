@@ -38,17 +38,12 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){
               
                <div class="col-lg-4 col-md-4">
                    <div class="profile-panel">
-                     <img src="images/pic.jpg" alt="profile-pic"><br>
+                     <img src="images/face.svg" alt="profile-pic"><br>
                       <strong><?php echo $name; ?></strong><br><br>
-                      
-                
-                      <strong><i class="fas fa-cart-plus"></i></strong><br>
-                    
-                      <strong>655</strong><br>
                       
                       <?php
                     if($userId == $_SESSION['userId']){
-                        echo '<a href="sell"><button name="submit" class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Start Selling">Start Selling</button></a>';
+                        echo '<a href="sell">Start Selling</a>';
                         
                     }else{
                         

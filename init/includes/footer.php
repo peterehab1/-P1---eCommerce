@@ -21,8 +21,8 @@
         </form>
       </div>
       <div class="left">
-        <span class="phone">+420 123 456 789</span>
-        <a class="mail" href="mailto:email.from@settings.com">email.from@settings.com</a>
+        
+        <a class="mail" href="mailto:email.from@settings.com">petereroshdy@gmail.com</a>
       </div>
     </div>
     <div class="bottom">

@@ -136,23 +136,23 @@ include "init/init.php";
         
     </ul>
     
-    <form class="form-inline my-2 my-lg-0">
-     <select class="search-form-select">
-         <option>Mobiles</option>
-         <option>Computers</option>
-         <option>Clothes : Men</option>
-         <option>Clothes : Women</option>
+    <form method="post" action="search" class="form-inline my-2 my-lg-0">
+     <select name="catg" class="search-form-select">
+         <option value="Mobiles">Mobiles</option>
+         <option value="Computers">Computers</option>
+         <option value="Clothes : Men">Clothes : Men</option>
+         <option value="Clothes : Women">Clothes : Women</option>
      </select>
-      <input  class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <input name="searchword"  class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       
       <strong style="color: white;">Starting at</strong>
-      <select class="search-form-select">
-         <option>All</option>
-         <option>100$</option>
-         <option>200$</option>
-         <option>300$</option>
-         <option>400$</option>
-         <option>500$</option>
+      <select name="price" class="search-form-select">
+         <option value="0">0$</option>
+         <option value="100">100$</option>
+         <option value="200">200$</option>
+         <option value="300">300$</option>
+         <option value="400">400$</option>
+         <option value="500">500$</option>
          
      </select>
      

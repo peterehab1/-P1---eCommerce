@@ -3,6 +3,10 @@ session_start();
 include "init/init.php";
 include "init/includes/header.php";
 
+$stmt = $conn->prepare("SELECT * FROM products ORDER BY productId DESC LIMIT 8");
+$stmt->execute(array());
+$row = $stmt->fetchAll();
+
 ?>
 
 
@@ -37,19 +41,19 @@ include "init/includes/header.php";
 <h6 class="starter">Last Added</h6>
 <div class="container">
     <div class="row starter">
-              <?php
-                
-                for($i = 1; $i < 9; $i++){
-                    echo ' <div class="col-lg-3">
-            <img class="products" src="images/boots.png" alt="boots">
-            <h4 class="text-center">Boot</h4>
-            <h6 class="text-center" style="color: crimson;">23.43$</h6>
-            <a href="#"><button class="products-btn">Buy</button></a>
+     
+        <?php
+        
+        foreach($row as $i){
+    echo ' <div class="col-lg-3">
+            <img class="products" src="images/'.$i['productImage'].'" alt="boots">
+            <h4 class="text-center">'.$i['productName'].'</h4>
+            <h6 class="text-center" style="color: crimson;">$'.$i['productPrice'].'</h6>
+            <a href="product?name='.$i['productName'].'&code='.$i['productCode'].'"><button class="products-btn">Buy</button></a>
         </div> ';
-                }
+}
         
-                ?>      
-        
+        ?>
     </div>
 </div>
 
